@@ -145,14 +145,6 @@
             color: var(--ink-muted);
             margin: -10px 0 16px;
         }
-        .sub-heading {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--ink-muted);
-            letter-spacing: .05em;
-            margin: 18px 0 8px;
-        }
-        .sub-heading:first-of-type { margin-top: 0; }
 
         /* ===== 店舗情報 ===== */
         .info-dl {
@@ -238,7 +230,7 @@
             color: #fff;
         }
 
-        /* ===== アコーディオン(カテゴリ：自転車/バイク) ===== */
+        /* ===== アコーディオン(カテゴリ：自転車/バイク/乗用車) ===== */
         .accordion-group {
             display: flex;
             flex-direction: column;
@@ -389,39 +381,6 @@
             padding: 12px 14px;
             line-height: 1.7;
             margin-top: 14px;
-        }
-
-        /* ===== 乗用車のタイヤ交換（独立カード） ===== */
-        .standalone-card {
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius);
-            padding: 14px 16px;
-        }
-        .standalone-head {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-        .standalone-title {
-            font-size: 15px;
-            font-weight: 700;
-        }
-        .standalone-price {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent-dk);
-            white-space: nowrap;
-        }
-        .standalone-card p {
-            font-size: 13px;
-            color: var(--ink);
-            line-height: 1.75;
-        }
-        .standalone-card .svc-row-note {
-            padding-left: 0;
-            margin-top: 8px;
         }
 
         /* ===== 出張・引き上げ対応（アコーディオン） ===== */
@@ -743,15 +702,14 @@
 
                         <details class="svc">
                             <summary>
-                                <span class="svc-row-name">基本整備</span>
+                                <span class="svc-row-name">簡易点検・調整</span>
                                 <span class="svc-row-price">1,000円〜</span>
                                 <span class="svc-chevron">▼</span>
                             </summary>
                             <div class="svc-body">
-                                <p class="svc-row-note">簡易なクイック点検の目安です。記録簿を発行するしっかりした点検（6ヶ月・12ヶ月点検等）は3,300円〜7,700円前後となります。</p>
+                                <p class="svc-row-note">ブレーキ・空気圧・ライトなどの簡単な点検や調整です。複数箇所の点検・調整や整備が必要な場合は、内容に応じて料金が異なります。</p>
                                 <ul class="sub-list">
                                     <li>ブレーキ調整</li>
-                                    <li>オイル交換</li>
                                     <li>空気圧調整</li>
                                     <li>バッテリー点検</li>
                                     <li>ライト点検</li>
@@ -768,20 +726,31 @@
                     </div>
                 </details>
 
-            </div>
+                <!-- 乗用車 -->
+                <details class="cat">
+                    <summary>
+                        <span class="cat-icon">🚗</span>
+                        乗用車
+                        <span class="cat-chevron">▼</span>
+                    </summary>
+                    <div class="cat-body">
 
-            <p class="sub-heading">乗用車</p>
-            <div class="standalone-card">
-                <div class="standalone-head">
-                    <span class="standalone-title">乗用車のタイヤ交換</span>
-                    <span class="standalone-price">5,000円〜</span>
-                </div>
-                <p>ノーマルタイヤからスタッドレスタイヤなどへの交換です。タイヤをご持参のうえ、当店駐車場までお越しください。</p>
-                <p class="svc-row-note">
-                    ※4本交換の場合の参考価格です。<br>
-                    ※平日昼間・完全予約制です。<br>
-                    ※タイヤの状態や車種などにより料金が異なる場合があります。
-                </p>
+                        <div class="svc-row">
+                            <div class="svc-row-main">
+                                <span class="svc-row-name">乗用車のタイヤ交換</span>
+                                <span class="svc-row-price">5,000円〜</span>
+                            </div>
+                            <p class="svc-row-note">
+                                ノーマルタイヤからスタッドレスタイヤなどへの交換です。タイヤを当店の駐車場までお持ちください。<br>
+                                ※4本交換の場合の参考価格です。<br>
+                                ※平日昼間・完全予約制です。<br>
+                                ※タイヤの状態や車種などにより料金が異なる場合があります。
+                            </p>
+                        </div>
+
+                    </div>
+                </details>
+
             </div>
 
             <p class="price-disclaimer">上記は目安料金です。実際の料金は車種・部品・作業内容などによって異なる場合がございますので、詳しくはお電話にてお問い合わせください。</p>
@@ -802,7 +771,7 @@
                 </summary>
                 <div class="travel-body">
                     <p>動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
-                    <p>長野市内およびその周辺地域が対象です。距離や車両の状態などにより料金が異なる場合があります。</p>
+                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。<br>※距離や車両の状態などにより料金が異なる場合があります。</p>
                 </div>
             </details>
 
