@@ -365,7 +365,6 @@
             flex-shrink: 0;
         }
 
-        /* 車検（単体行・アコーディオン不要な注記付き項目） */
         .svc-plain-note {
             font-size: 11.5px;
             color: var(--ink-muted);
@@ -384,7 +383,7 @@
             margin-top: 14px;
         }
 
-        /* ===== 出張・引き上げサービス ===== */
+        /* ===== 出張・引き上げ（折りたたみ式） ===== */
         .travel-intro {
             font-size: 12.5px;
             color: var(--ink-muted);
@@ -394,57 +393,69 @@
             line-height: 1.7;
             margin-bottom: 16px;
         }
-        .travel-card {
+        details.travel {
             background: var(--bg);
             border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
-        .travel-card-head {
+        details.travel > summary {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 8px;
-            margin-bottom: 10px;
-        }
-        .travel-card-title {
-            font-size: 15px;
+            padding: 13px 16px;
             font-weight: 700;
-            color: var(--ink);
+            font-size: 14.5px;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            transition: background .15s;
         }
+        details.travel > summary::-webkit-details-marker { display: none; }
+        details.travel > summary:hover { background: var(--accent-lt); }
+        details.travel[open] > summary { background: var(--accent-lt); }
         .travel-target {
             display: inline-block;
             background: var(--accent);
             color: #fff;
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
-            padding: 3px 10px;
+            padding: 3px 9px;
             border-radius: 20px;
             white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .travel-summary-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+        .travel-summary-left span:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        details.travel[open] .svc-chevron { transform: rotate(180deg); }
+        .travel-body {
+            padding: 4px 16px 16px;
         }
         .travel-desc {
             font-size: 13px;
             color: var(--ink);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.7;
         }
         .travel-meta {
-            display: grid;
-            grid-template-columns: 68px 1fr;
-            gap: 6px 8px;
             font-size: 12.5px;
-            margin-bottom: 8px;
-        }
-        .travel-meta dt {
             color: var(--ink-muted);
-            font-weight: 700;
-        }
-        .travel-meta dd {
-            color: var(--ink);
+            margin-bottom: 6px;
         }
         .travel-price {
-            color: var(--accent-dk);
+            font-size: 14px;
             font-weight: 700;
+            color: var(--accent-dk);
         }
         .travel-caution {
             font-size: 11.5px;
@@ -576,9 +587,9 @@
             </a>
         </section>
 
-        <!-- サービス・料金 -->
+        <!-- 店舗でのサービス -->
         <section class="section" id="services">
-            <h2 class="section-title">サービス・料金の目安</h2>
+            <h2 class="section-title">店舗でのサービス</h2>
             <p class="section-sub-note">タップすると各カテゴリのサービスと料金が開きます</p>
             <div class="accordion-group">
 
@@ -586,7 +597,7 @@
                 <details class="cat">
                     <summary>
                         <span class="cat-icon">🚲</span>
-                        自転車（シティサイクル等）
+                        自転車
                         <span class="cat-chevron">▼</span>
                     </summary>
                     <div class="cat-body">
@@ -654,7 +665,7 @@
                 <details class="cat">
                     <summary>
                         <span class="cat-icon">🏍️</span>
-                        バイク（スクーター・カブ等）
+                        バイク
                         <span class="cat-chevron">▼</span>
                     </summary>
                     <div class="cat-body">
@@ -728,7 +739,7 @@
 
                         <div class="svc-row">
                             <div class="svc-row-main"><span class="svc-row-name">車検</span></div>
-                            <p class="svc-plain-note">外部委託になりますが、対応しています。詳しくは店舗までお問い合わせください。</p>
+                            <p class="svc-plain-note">外部委託になりますが、中型・大型バイクの車検に対応しています。詳しくは店舗までお問い合わせください。</p>
                         </div>
 
                     </div>
@@ -739,72 +750,80 @@
             <p class="price-disclaimer">上記は目安料金です。実際の料金は車種・部品・作業内容などによって異なる場合がございますので、詳しくはお電話にてお問い合わせください。</p>
         </section>
 
-        <!-- 出張・引き上げサービス -->
+        <!-- 出張・引き上げ -->
         <section class="section" id="onsite">
-            <h2 class="section-title">出張・引き上げサービス</h2>
-            <p class="travel-intro">動けなくなった車両への出張対応です。自動車整備全般に対応する工場ではなく、下記の内容に限定した対応となります。対応の可否は状況により異なりますので、まずはお電話でご相談ください。</p>
+            <h2 class="section-title">出張・引き上げ</h2>
+            <p class="travel-intro">店舗まで持ち込めない場合などに対応する限定的な出張サービスです。自動車整備全般に対応する工場ではありません。タップすると詳細が開きます。</p>
 
-            <div class="travel-card">
-                <div class="travel-card-head">
-                    <span class="travel-card-title">自転車・バイクの引き上げ</span>
-                    <span class="travel-target">自転車・バイク</span>
+            <details class="travel">
+                <summary>
+                    <span class="travel-summary-left">
+                        <span>自転車・バイクの引き上げ</span>
+                        <span class="travel-target">自転車・バイク</span>
+                    </span>
+                    <span class="svc-chevron">▼</span>
+                </summary>
+                <div class="travel-body">
+                    <p class="travel-desc">動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
+                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p class="travel-price">15,000円〜</p>
                 </div>
-                <p class="travel-desc">動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
-                <dl class="travel-meta">
-                    <dt>対応地域</dt><dd>長野市内およびその周辺地域</dd>
-                    <dt>料金</dt><dd class="travel-price">15,000円〜</dd>
-                </dl>
-            </div>
+            </details>
 
-            <div class="travel-card">
-                <div class="travel-card-head">
-                    <span class="travel-card-title">バッテリー上がりの応急処置</span>
-                    <span class="travel-target">バイク・乗用車</span>
+            <details class="travel">
+                <summary>
+                    <span class="travel-summary-left">
+                        <span>バッテリー上がりの応急処置</span>
+                        <span class="travel-target">バイク・乗用車</span>
+                    </span>
+                    <span class="svc-chevron">▼</span>
+                </summary>
+                <div class="travel-body">
+                    <p class="travel-desc">出張してブースターを接続し、エンジンを始動する応急処置です。</p>
+                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p class="travel-price">15,000円〜</p>
+                    <p class="travel-caution">
+                        ※バッテリーの販売・取り付けをその場で行うサービスではありません（ご注文は承れます）。<br>
+                        ※お急ぎの場合は、最寄りのカー用品店やガソリンスタンドへのご相談をおすすめします。
+                    </p>
                 </div>
-                <p class="travel-desc">出張してブースターを接続し、エンジンを始動する応急処置に対応しています。</p>
-                <dl class="travel-meta">
-                    <dt>対応地域</dt><dd>長野市内およびその周辺地域</dd>
-                    <dt>対応時間</dt><dd>平日昼間</dd>
-                    <dt>条件</dt><dd>待機中の場合に対応</dd>
-                    <dt>料金</dt><dd class="travel-price">15,000円〜</dd>
-                </dl>
-                <p class="travel-caution">
-                    ※バッテリーの販売・取り付けをその場で行うサービスではありません（ご注文は承れます）。<br>
-                    ※平日昼間、待機中の場合に対応しています。<br>
-                    ※お急ぎの場合は、最寄りのカー用品店やガソリンスタンドへのご相談をおすすめします。
-                </p>
-            </div>
+            </details>
 
-            <div class="travel-card">
-                <div class="travel-card-head">
-                    <span class="travel-card-title">乗用車のタイヤ交換</span>
-                    <span class="travel-target">乗用車</span>
+            <details class="travel">
+                <summary>
+                    <span class="travel-summary-left">
+                        <span>乗用車のタイヤ交換</span>
+                        <span class="travel-target">乗用車</span>
+                    </span>
+                    <span class="svc-chevron">▼</span>
+                </summary>
+                <div class="travel-body">
+                    <p class="travel-desc">ノーマルタイヤからスタッドレスタイヤへの交換に対応しています。タイヤ交換のみの対応です。</p>
+                    <p class="travel-meta">平日昼間・完全予約制。タイヤをご持参のうえ、当店駐車場まで来店してください。</p>
+                    <p class="travel-price">15,000円〜</p>
+                    <p class="travel-caution">
+                        ※空気圧の調整、ホイールナットの増し締めは最寄りのガソリンスタンドなどをご利用ください。
+                    </p>
                 </div>
-                <p class="travel-desc">ノーマルタイヤからスタッドレスタイヤへの交換に対応しています。</p>
-                <dl class="travel-meta">
-                    <dt>対応</dt><dd>タイヤ交換のみ</dd>
-                    <dt>条件</dt><dd>平日昼間・完全予約制</dd>
-                    <dt>場所</dt><dd>タイヤをご持参のうえ、当店駐車場まで来店</dd>
-                    <dt>料金</dt><dd class="travel-price">15,000円〜</dd>
-                </dl>
-                <p class="travel-caution">
-                    ※空気圧の調整、ホイールナットの増し締めは最寄りのガソリンスタンドなどをご利用ください。
-                </p>
-            </div>
+            </details>
 
-            <div class="travel-card">
-                <div class="travel-card-head">
-                    <span class="travel-card-title">パンクした乗用車のスペアタイヤ交換</span>
-                    <span class="travel-target">乗用車</span>
+            <details class="travel">
+                <summary>
+                    <span class="travel-summary-left">
+                        <span>パンクした乗用車のスペアタイヤ交換</span>
+                        <span class="travel-target">乗用車</span>
+                    </span>
+                    <span class="svc-chevron">▼</span>
+                </summary>
+                <div class="travel-body">
+                    <p class="travel-desc">パンクして動けなくなった乗用車のもとへ出張し、スペアタイヤへの交換を行います。現地でパンクそのものを修理するサービスではありません。</p>
+                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p class="travel-price">15,000円〜</p>
+                    <p class="travel-caution">
+                        ※スペアタイヤはあくまでも応急処置用です。交換後は、できるだけ早くパンク修理に対応できる店舗で点検・修理を受けてください。
+                    </p>
                 </div>
-                <p class="travel-desc">パンクして動けなくなった乗用車に出張し、スペアタイヤへの交換を行います。現地でパンクそのものを修理するサービスではありません。</p>
-                <dl class="travel-meta">
-                    <dt>対応地域</dt><dd>長野市内およびその周辺地域</dd>
-                    <dt>対応時間</dt><dd>平日昼間</dd>
-                    <dt>条件</dt><dd>待機中の場合に対応</dd>
-                    <dt>料金</dt><dd class="travel-price">15,000円〜</dd>
-                </dl>
-            </div>
+            </details>
 
             <p class="travel-note-license">整備士資格を持つ店主が対応しています。</p>
             <a href="tel:026-235-1121" class="cta-tel-outline">出張・引き上げについて電話で相談する</a>
@@ -817,7 +836,7 @@
 
                 <details class="faq">
                     <summary>Q. バイクの車検はお願いできますか？<span class="svc-chevron">▼</span></summary>
-                    <div class="faq-body">A. 外部委託になりますが対応しています。詳しくは店舗までお問い合わせください。</div>
+                    <div class="faq-body">A. 外部委託になりますが、中型・大型バイクの車検に対応しています。詳しくは店舗までお問い合わせください。</div>
                 </details>
 
                 <details class="faq">
