@@ -383,13 +383,10 @@
             margin-top: 14px;
         }
 
-        /* ===== 出張・引き上げ（折りたたみ式） ===== */
+        /* ===== 出張・引き上げ対応（折りたたみ式・シンプル表示） ===== */
         .travel-intro {
             font-size: 12.5px;
             color: var(--ink-muted);
-            background: var(--accent-lt);
-            border-radius: 8px;
-            padding: 12px 14px;
             line-height: 1.7;
             margin-bottom: 16px;
         }
@@ -404,7 +401,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 8px;
-            padding: 13px 16px;
+            padding: 14px 16px;
             font-weight: 700;
             font-size: 14.5px;
             cursor: pointer;
@@ -415,47 +412,21 @@
         details.travel > summary::-webkit-details-marker { display: none; }
         details.travel > summary:hover { background: var(--accent-lt); }
         details.travel[open] > summary { background: var(--accent-lt); }
-        .travel-target {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: 10.5px;
-            font-weight: 700;
-            padding: 3px 9px;
-            border-radius: 20px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .travel-summary-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-            min-width: 0;
-        }
-        .travel-summary-left span:first-child {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
         details.travel[open] .svc-chevron { transform: rotate(180deg); }
         .travel-body {
-            padding: 4px 16px 16px;
+            padding: 2px 16px 16px;
         }
-        .travel-desc {
+        .travel-body p {
             font-size: 13px;
             color: var(--ink);
+            line-height: 1.75;
             margin-bottom: 8px;
-            line-height: 1.7;
         }
-        .travel-meta {
-            font-size: 12.5px;
-            color: var(--ink-muted);
-            margin-bottom: 6px;
-        }
-        .travel-price {
-            font-size: 14px;
+        .travel-body .travel-price {
+            font-size: 15px;
             font-weight: 700;
             color: var(--accent-dk);
+            margin-bottom: 0;
         }
         .travel-caution {
             font-size: 11.5px;
@@ -750,37 +721,31 @@
             <p class="price-disclaimer">上記は目安料金です。実際の料金は車種・部品・作業内容などによって異なる場合がございますので、詳しくはお電話にてお問い合わせください。</p>
         </section>
 
-        <!-- 出張・引き上げ -->
+        <!-- 出張・引き上げ対応 -->
         <section class="section" id="onsite">
-            <h2 class="section-title">出張・引き上げ</h2>
-            <p class="travel-intro">店舗まで持ち込めない場合などに対応する限定的な出張サービスです。自動車整備全般に対応する工場ではありません。タップすると詳細が開きます。</p>
+            <h2 class="section-title">出張・引き上げ対応</h2>
+            <p class="travel-intro">動けないときの引き上げや、バッテリー上がり・パンクなどの出張対応を行っています。対応できる内容や状況はサービスごとに異なりますので、まずはお電話でご相談ください。</p>
 
             <details class="travel">
                 <summary>
-                    <span class="travel-summary-left">
-                        <span>自転車・バイクの引き上げ</span>
-                        <span class="travel-target">自転車・バイク</span>
-                    </span>
+                    <span>自転車・バイクの引き上げ</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
-                    <p class="travel-desc">動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
-                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p>動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
+                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
                     <p class="travel-price">15,000円〜</p>
                 </div>
             </details>
 
             <details class="travel">
                 <summary>
-                    <span class="travel-summary-left">
-                        <span>バッテリー上がりの応急処置</span>
-                        <span class="travel-target">バイク・乗用車</span>
-                    </span>
+                    <span>バッテリー上がりの応急処置</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
-                    <p class="travel-desc">出張してブースターを接続し、エンジンを始動する応急処置です。</p>
-                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p>出張してブースターを接続し、エンジンを始動する応急処置です。対象はバイク・乗用車です。</p>
+                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
                     <p class="travel-price">15,000円〜</p>
                     <p class="travel-caution">
                         ※バッテリーの販売・取り付けをその場で行うサービスではありません（ご注文は承れます）。<br>
@@ -791,15 +756,12 @@
 
             <details class="travel">
                 <summary>
-                    <span class="travel-summary-left">
-                        <span>乗用車のタイヤ交換</span>
-                        <span class="travel-target">乗用車</span>
-                    </span>
+                    <span>乗用車のタイヤ交換</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
-                    <p class="travel-desc">ノーマルタイヤからスタッドレスタイヤへの交換に対応しています。タイヤ交換のみの対応です。</p>
-                    <p class="travel-meta">平日昼間・完全予約制。タイヤをご持参のうえ、当店駐車場まで来店してください。</p>
+                    <p>ノーマルタイヤからスタッドレスタイヤへの交換に対応しています。タイヤ交換のみの対応です。タイヤをご持参のうえ、当店駐車場までお越しください。</p>
+                    <p>平日昼間・完全予約制。</p>
                     <p class="travel-price">15,000円〜</p>
                     <p class="travel-caution">
                         ※空気圧の調整、ホイールナットの増し締めは最寄りのガソリンスタンドなどをご利用ください。
@@ -809,18 +771,15 @@
 
             <details class="travel">
                 <summary>
-                    <span class="travel-summary-left">
-                        <span>パンクした乗用車のスペアタイヤ交換</span>
-                        <span class="travel-target">乗用車</span>
-                    </span>
+                    <span>パンクした乗用車のスペアタイヤ交換</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
-                    <p class="travel-desc">パンクして動けなくなった乗用車のもとへ出張し、スペアタイヤへの交換を行います。現地でパンクそのものを修理するサービスではありません。</p>
-                    <p class="travel-meta">対応地域：長野市内およびその周辺地域<br>平日昼間、待機中の場合に対応しています。</p>
+                    <p>パンクして動けなくなった乗用車に出張し、スペアタイヤへの交換を行います。現地でパンクそのものを修理するサービスではありません。</p>
+                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
                     <p class="travel-price">15,000円〜</p>
                     <p class="travel-caution">
-                        ※スペアタイヤはあくまでも応急処置用です。交換後は、できるだけ早くパンク修理に対応できる店舗で点検・修理を受けてください。
+                        ※スペアタイヤはあくまでも応急処置用です。交換後は、できるだけ早く最寄りのパンク修理に対応できる店舗などで点検・修理を受けてください。
                     </p>
                 </div>
             </details>
