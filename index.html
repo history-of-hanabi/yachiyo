@@ -145,6 +145,14 @@
             color: var(--ink-muted);
             margin: -10px 0 16px;
         }
+        .sub-heading {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-muted);
+            letter-spacing: .05em;
+            margin: 18px 0 8px;
+        }
+        .sub-heading:first-of-type { margin-top: 0; }
 
         /* ===== 店舗情報 ===== */
         .info-dl {
@@ -383,7 +391,40 @@
             margin-top: 14px;
         }
 
-        /* ===== 出張・引き上げ対応（折りたたみ式・シンプル表示） ===== */
+        /* ===== 乗用車のタイヤ交換（独立カード） ===== */
+        .standalone-card {
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+        .standalone-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .standalone-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .standalone-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-dk);
+            white-space: nowrap;
+        }
+        .standalone-card p {
+            font-size: 13px;
+            color: var(--ink);
+            line-height: 1.75;
+        }
+        .standalone-card .svc-row-note {
+            padding-left: 0;
+            margin-top: 8px;
+        }
+
+        /* ===== 出張・引き上げ対応（アコーディオン） ===== */
         .travel-intro {
             font-size: 12.5px;
             color: var(--ink-muted);
@@ -413,6 +454,19 @@
         details.travel > summary:hover { background: var(--accent-lt); }
         details.travel[open] > summary { background: var(--accent-lt); }
         details.travel[open] .svc-chevron { transform: rotate(180deg); }
+        .travel-summary-left {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+        .travel-summary-price {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-dk);
+            white-space: nowrap;
+        }
         .travel-body {
             padding: 2px 16px 16px;
         }
@@ -421,12 +475,6 @@
             color: var(--ink);
             line-height: 1.75;
             margin-bottom: 8px;
-        }
-        .travel-body .travel-price {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--accent-dk);
-            margin-bottom: 0;
         }
         .travel-caution {
             font-size: 11.5px;
@@ -558,9 +606,9 @@
             </a>
         </section>
 
-        <!-- 店舗でのサービス -->
+        <!-- サービス・料金 -->
         <section class="section" id="services">
-            <h2 class="section-title">店舗でのサービス</h2>
+            <h2 class="section-title">サービス・料金</h2>
             <p class="section-sub-note">タップすると各カテゴリのサービスと料金が開きます</p>
             <div class="accordion-group">
 
@@ -667,10 +715,14 @@
 
                         <div class="svc-row">
                             <div class="svc-row-main">
-                                <span class="svc-row-name">タイヤ交換</span>
+                                <span class="svc-row-name">タイヤ交換工賃</span>
                                 <span class="svc-row-price">4,400円〜</span>
                             </div>
-                            <p class="svc-row-note">タイヤ本体・交換工賃・廃タイヤ処分料をすべて含めると、前後どちらか1本あたり総額7,000円〜9,000円前後が目安です。</p>
+                            <p class="svc-row-note">
+                                ※50ccスクーターの場合の参考価格です。<br>
+                                ※タイヤ本体・交換工賃・廃タイヤ処分料を含めた総額は、タイヤの種類や車種などによって異なります（50ccスクーターの場合、前後どちらか1本あたり総額7,000円〜9,000円前後が目安です）。<br>
+                                ※大型バイクなどは料金が異なります。
+                            </p>
                         </div>
 
                         <div class="svc-row">
@@ -718,6 +770,20 @@
 
             </div>
 
+            <p class="sub-heading">乗用車</p>
+            <div class="standalone-card">
+                <div class="standalone-head">
+                    <span class="standalone-title">乗用車のタイヤ交換</span>
+                    <span class="standalone-price">5,000円〜</span>
+                </div>
+                <p>ノーマルタイヤからスタッドレスタイヤなどへの交換です。タイヤを当店の駐車場までお持ちください。</p>
+                <p class="svc-row-note">
+                    ※4本交換の場合の参考価格です。<br>
+                    ※平日昼間・完全予約制です。<br>
+                    ※タイヤの状態や車種などにより料金が異なる場合があります。
+                </p>
+            </div>
+
             <p class="price-disclaimer">上記は目安料金です。実際の料金は車種・部品・作業内容などによって異なる場合がございますので、詳しくはお電話にてお問い合わせください。</p>
         </section>
 
@@ -728,58 +794,49 @@
 
             <details class="travel">
                 <summary>
-                    <span>自転車・バイクの引き上げ</span>
+                    <span class="travel-summary-left">
+                        <span>自転車・バイクの引き上げ</span>
+                    </span>
+                    <span class="travel-summary-price">15,000円〜</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
                     <p>動けなくなった自転車・バイクを引き上げ、基本的には当店へ持ち帰って修理します。車両や故障の状態によって対応が異なりますので、まずはご相談ください。</p>
-                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
-                    <p class="travel-price">15,000円〜</p>
+                    <p>長野市内およびその周辺地域が対象です。距離や車両の状態などにより料金が異なる場合があります。</p>
                 </div>
             </details>
 
             <details class="travel">
                 <summary>
-                    <span>バッテリー上がりの応急処置</span>
+                    <span class="travel-summary-left">
+                        <span>パンクした乗用車のスペアタイヤ交換</span>
+                    </span>
+                    <span class="travel-summary-price">15,000円〜</span>
                     <span class="svc-chevron">▼</span>
                 </summary>
                 <div class="travel-body">
-                    <p>出張してブースターを接続し、エンジンを始動する応急処置です。対象はバイク・乗用車です。</p>
+                    <p>パンクして動けなくなった乗用車のスペアタイヤを、現地で交換する応急対応です。パンクそのものを現地で修理するサービスではありません。</p>
                     <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
-                    <p class="travel-price">15,000円〜</p>
+                    <p class="travel-caution">
+                        ※スペアタイヤ交換はあくまで応急的な対応です。交換後は、近くのタイヤ店や整備工場などで点検・修理を受けてください。
+                    </p>
+                </div>
+            </details>
+
+            <details class="travel">
+                <summary>
+                    <span class="travel-summary-left">
+                        <span>バッテリー上がりの応急処置</span>
+                    </span>
+                    <span class="travel-summary-price">15,000円〜</span>
+                    <span class="svc-chevron">▼</span>
+                </summary>
+                <div class="travel-body">
+                    <p>バッテリーが上がった車両に出張し、ブースターを接続してエンジンを始動する応急処置です。対象はバイク・乗用車です。</p>
+                    <p>長野市内およびその周辺。平日昼間、待機中の場合に対応しています。</p>
                     <p class="travel-caution">
                         ※バッテリーの販売・取り付けをその場で行うサービスではありません（ご注文は承れます）。<br>
                         ※お急ぎの場合は、最寄りのカー用品店やガソリンスタンドへのご相談をおすすめします。
-                    </p>
-                </div>
-            </details>
-
-            <details class="travel">
-                <summary>
-                    <span>乗用車のタイヤ交換</span>
-                    <span class="svc-chevron">▼</span>
-                </summary>
-                <div class="travel-body">
-                    <p>ノーマルタイヤからスタッドレスタイヤへの交換に対応しています。タイヤ交換のみの対応です。タイヤをご持参のうえ、当店駐車場までお越しください。</p>
-                    <p>平日昼間・完全予約制。</p>
-                    <p class="travel-price">15,000円〜</p>
-                    <p class="travel-caution">
-                        ※空気圧の調整、ホイールナットの増し締めは最寄りのガソリンスタンドなどをご利用ください。
-                    </p>
-                </div>
-            </details>
-
-            <details class="travel">
-                <summary>
-                    <span>パンクした乗用車のスペアタイヤ交換</span>
-                    <span class="svc-chevron">▼</span>
-                </summary>
-                <div class="travel-body">
-                    <p>パンクして動けなくなった乗用車に出張し、スペアタイヤへの交換を行います。現地でパンクそのものを修理するサービスではありません。</p>
-                    <p>長野市内およびその周辺地域。平日昼間、待機中の場合に対応しています。</p>
-                    <p class="travel-price">15,000円〜</p>
-                    <p class="travel-caution">
-                        ※スペアタイヤはあくまでも応急処置用です。交換後は、できるだけ早く最寄りのパンク修理に対応できる店舗などで点検・修理を受けてください。
                     </p>
                 </div>
             </details>
